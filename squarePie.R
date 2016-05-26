@@ -14,7 +14,7 @@ require(plotrix)
 # x and y are the center coordinates for the square.
 # slicesizes is a vector of the relative sizes of the slices; does not have to sum to 1,
 # and can contain zeros.
-squarePie <- function(x, y, slicesizes, width, col = rainbow(length(slicesizes))){
+squarePie <- function(x, y, slicesizes, width, col = rainbow(length(slicesizes)), lwd = 1){
     if(length(x) != 1 || length(y) != 1){
         stop("squarePie only creates one pie chart at a time.  Use a for loop or mapply to make multiple pie charts.")
     }
@@ -123,12 +123,12 @@ squarePie <- function(x, y, slicesizes, width, col = rainbow(length(slicesizes))
 
         # draw the polygon
         polygon(x = sliceVertices[[s]]$x, y = sliceVertices[[s]]$y,
-                col = col[s])
+                col = col[s], lwd = lwd)
     }
     return(invisible(list(sliceVertices, col)))
 }
 
-trianglePie <- function(x, y, slicesizes, width, col = rainbow(length(slicesizes))){
+trianglePie <- function(x, y, slicesizes, width, col = rainbow(length(slicesizes)), lwd = 1){
     if(length(x) != 1 || length(y) != 1){
         stop("trianglePie only creates one pie chart at a time.  Use a for loop or mapply to make multiple pie charts.")
     }
@@ -239,7 +239,7 @@ trianglePie <- function(x, y, slicesizes, width, col = rainbow(length(slicesizes
 
         # draw the polygon
         polygon(x = sliceVertices[[s]]$x, y = sliceVertices[[s]]$y,
-                col = col[s])
+                col = col[s], lwd = lwd)
     }
     return(invisible(list(sliceVertices, col)))
 }
